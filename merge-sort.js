@@ -1,13 +1,17 @@
 const listOfNumbers = [5, 0, 10, 5, 8, 45, 3, 7, 1, 88, 2, 65, 3, 0, 5, 2, 6];
 // recurcive version
-function mergeSort(arr, sorted = []) {
-  const nums = [...arr];
-  if (nums.length === 0) return sorted;
-  const min = Math.min(...nums);
-  const index = nums.indexOf(min);
-  nums.splice(index, 1);
-  sorted.push(min);
-  return mergeSort(nums, sorted);
+function mergeSort(arr) {
+  const sorted = [];
+  const sort = (array, sortedArr) => {
+    const nums = [...array];
+    if (nums.length === 0) return sortedArr;
+    const min = Math.min(...nums);
+    const index = nums.indexOf(min);
+    nums.splice(index, 1);
+    sortedArr.push(min);
+    return sort(nums, sortedArr);
+  };
+  return sort(arr, sorted);
 }
 
 // for loop version
