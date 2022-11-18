@@ -1,10 +1,14 @@
-function recursiveFibs(n, recursiveNums = [0, 1]) {
-  if (n === 2) return recursiveNums;
-  if (n <= 1) return [0];
-  const numA = recursiveNums[recursiveNums.length - 1];
-  const numB = recursiveNums[recursiveNums.length - 2];
-  recursiveNums.push(numA + numB);
-  return recursiveFibs(n - 1, recursiveNums);
+function recursiveFibs(n) {
+  const fibNums = [0, 1];
+  const fibonacci = (n, recArr) => {
+    if (n === 2) return recArr;
+    if (n <= 1) return [0];
+    const numA = recArr[recArr.length - 1];
+    const numB = recArr[recArr.length - 2];
+    recArr.push(numA + numB);
+    return fibonacci(n - 1, recArr);
+  };
+  return fibonacci(n, fibNums);
 }
 
 console.log(recursiveFibs(-1)); // returns [0]
